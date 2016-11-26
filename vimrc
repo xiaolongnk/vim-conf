@@ -21,6 +21,8 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'posva/vim-vue'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
