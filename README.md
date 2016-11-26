@@ -1,6 +1,5 @@
 ## vim 配置
-其实vim也是蛮复杂的，我用vim从大二开始，刚开始总是自己找一些现成的配置，也不知道是什么意思，
-插件安装也很麻烦，有时候要找很久，也基本是按照自己看来的方式，随便放进去。但当时很享受这个
+其实vim也是蛮复杂的，我用vim从大二开始，刚开始总是自己找一些现成的配置，也不知道是什么意思，插件安装也很麻烦，有时候要找很久，也基本是按照自己看来的方式，随便放进去。但当时很享受这个
 过程，虽然那时候的vim用的很一般，但是很喜欢，是我对计算机兴趣的很大一个源泉。
 
 几年下来，也积累了不少东西，对vim的追求也发生过比较大的变化。以前追求各种新鲜的功能，各种
@@ -36,18 +35,18 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'posva/vim-vue'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 ```
 
-vim airline
-
 ### 参考资料
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
+1. https://github.com/VundleVim/Vundle.vim 
+2. https://github.com/tpope/vim-pathogen
+3. https://github.com/Raimondi/delimitMate
+4. https://github.com/Valloric/YouCompleteMe#installation
+6. https://github.com/vim-airline/vim-airline
+5. http://www.xiaozhou.net/from-vim-to-neovim-2016-05-21.html
 
 
 

@@ -194,13 +194,11 @@ let g:html_number_lines = 0
 "hi cursorline   cterm=NONE ctermbg=234 ctermfg=NONE
 hi cursorline   cterm=NONE ctermbg=255  ctermfg=NONE
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
-set tags=tags;
-set tags+=/home/service/src/php-5.6
-set tags+=/home/service/src/nginx-1.10.1
+"set tags=tags;
+"set tags+=/home/service/src/php-5.6
+"set tags+=/home/service/src/nginx-1.10.1
 
 set csre
 set autochdir
 set backspace=indent,eol,start
 let g:formatterpath = ['~/.vim/template/']
-
-
