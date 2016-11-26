@@ -12,8 +12,10 @@
 我是假设你再一个配有配置的机器上配置vim。 如果你已经有了自己习惯的配置，可以先将你的配置备份
 一下，然后再将你的配置融合进来，从而形成习惯你自己的配置。
 
+```
 git clone https://github.com/xiaolongnk/vim-conf ~/.vim
 cp ~/.vim/vimrc ~/.vimrc
+```
 
 ### 插件
 
@@ -47,8 +49,3 @@ Plugin 'vim-airline/vim-airline-themes'
 4. https://github.com/Valloric/YouCompleteMe#installation
 6. https://github.com/vim-airline/vim-airline
 5. http://www.xiaozhou.net/from-vim-to-neovim-2016-05-21.html
-
-
-
-
-
