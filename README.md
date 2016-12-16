@@ -21,21 +21,16 @@ cp ~/.vim/vimrc ~/.vimrc
 
 包含的插件.
 ```shell
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
 Plugin 'Raimondi/delimitMate'
-Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mattn/emmet-vim'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'posva/vim-vue'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -46,6 +41,5 @@ Plugin 'vim-airline/vim-airline-themes'
 1. https://github.com/VundleVim/Vundle.vim 
 2. https://github.com/tpope/vim-pathogen
 3. https://github.com/Raimondi/delimitMate
-4. https://github.com/Valloric/YouCompleteMe#installation
-6. https://github.com/vim-airline/vim-airline
+4. https://github.com/vim-airline/vim-airline
 5. http://www.xiaozhou.net/from-vim-to-neovim-2016-05-21.html
