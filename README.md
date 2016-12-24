@@ -21,7 +21,6 @@ cp ~/.vim/vimrc ~/.vimrc
 
 包含的插件.
 ```shell
-Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'plasticboy/vim-markdown'
