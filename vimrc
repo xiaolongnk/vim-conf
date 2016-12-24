@@ -5,7 +5,6 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'plasticboy/vim-markdown'
@@ -18,22 +17,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -76,21 +59,14 @@ set clipboard+=unnamed encoding=utf-8 termencoding=utf-8
 set formatoptions+=mM
 set fencs=utf-8,gbk
 
-":inoremap ( ()<ESC>i
-":inoremap ) <c-r>=ClosePair(')')<CR>
-":inoremap { {<CR>}<ESC>O
-":inoremap } <c-r>=ClosePair('}')<CR>
-":inoremap [ []<ESC>i
-":inoremap ] <c-r>=ClosePair(']')<CR>
-"":inoremap " ""<ESC>i
-"":inoremap ' ''<ESC>i
-"function! ClosePair(char)
-"	if getline('.')[col('.') - 1] == a:char
-"		return "\<Right>"
-"	else
-"		return a:char
-"	endif
-"endfunction
+"" little setting for vim-airline , awesome plugin.
+let g:airline_theme='aurora'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '>' 
+
+"setting bellow can help your buffer tab show line number, help you to switch between all buffers"
+let g:airline#extensions#tabline#buffer_nr_show = 1 
 
 let g:tagbar_width = 30       "设置宽度，默认为40  
 "autocmd VimEnter * nested :call tagbar#autoopen(1)    "打开vim时自动打开  
@@ -163,24 +139,6 @@ nmap nt :NERDTreeToggle<CR>
 nmap tl :TagbarToggle<CR>   "设置快捷键  
 nmap bb :call RunRubyP()<CR>
 
-"imap section;
-" Ctrl + H            光标移当前行行首
-imap <c-h> <ESC>I
-" Ctrl + J            光标移下一行行首
-imap <c-j> <ESC><Down>I
-" Ctrl + K            光标移上一行行尾
-imap <c-k> <ESC><Up>A
-" Ctrl + L            光标移当前行行尾
-imap <c-l> <ESC>A
-" Alt  + H            光标左移一格
-imap <m-h> <Left>
-" Alt  + J            光标下移一格
-imap <m-j> <Down>
-" Alt  + K            光标上移一格
-imap <m-k> <Up>
-" Alt  + L            光标右移一格
-imap <m-l> <Right>
-
 au BufNewFile,BufRead *.txt  set paste
 au BufNewFile,BufRead *.c,*.cpp,*.php,*.html,*.java,*.py,*.js,* set nopaste
 set t_Co=256
@@ -190,6 +148,7 @@ let g:html_number_lines = 0
 "hi cursorline   cterm=NONE ctermbg=234 ctermfg=NONE
 hi cursorline   cterm=NONE ctermbg=255  ctermfg=NONE
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
+
 "set tags=tags;
 "set tags+=/home/service/src/php-5.6
 "set tags+=/home/service/src/nginx-1.10.1
