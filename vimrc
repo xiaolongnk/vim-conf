@@ -1,4 +1,5 @@
 " set the runtime path to include Vundle and initialize
+set path+=**
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -6,6 +7,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'majutsushi/tagbar'
+Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdtree'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Chiel92/vim-autoformat'
@@ -64,6 +66,7 @@ let g:airline_theme='aurora'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '>' 
+let g:airline#extensions#branch#enabled = 1
 
 "setting bellow can help your buffer tab show line number, help you to switch between all buffers"
 let g:airline#extensions#tabline#buffer_nr_show = 1 
