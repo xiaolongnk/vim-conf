@@ -157,7 +157,7 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 "set tags+=/home/service/src/php-5.6
 "set tags+=/home/service/src/nginx-1.10.1
 
-set csre
+"set csre
 set autochdir
 set backspace=indent,eol,start
 let g:formatterpath = ['~/.vim/template/']
