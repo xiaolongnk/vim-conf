@@ -51,6 +51,8 @@ rake make
 
 vim-airline也很好用。一般来说要和vim-airline-themes 配合使用。
 效果图如下,相关的配置，vimrc中已经配置好了，如果没有特殊需求，不用过多配置了。
+
+
 ![vim-airline](https://camo.githubusercontent.com/ba79534309330accd776a8d2a0712f7c4037d7f9/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f3330363530322f313037323632332f34346332393261302d313439352d313165332d396365362d6463616461336631633533362e676966)
 需要注明的一点：就是vim-airline 的tabline 的使用。其实就是讲vim 的buffer 展示在嘴上面了。
 这样可以看见所有的buffer。并且我还将buffer的数字也显示出来了。这样用:bn来切换buffer就方便
