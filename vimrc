@@ -20,6 +20,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 
+"setting for my command-t
+set wildignore+=node_modules,.git,*.o,*.obj,vendor
+"let g:CommandTWildIgnore=&wildignore . ",./node_modules"
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
