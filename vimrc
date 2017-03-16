@@ -145,6 +145,7 @@ endfunction
 nmap tt :sh<cr>
 nmap cc :call DoOneFileMake()<CR>
 nmap nt :NERDTreeToggle<CR>
+nmap ct :CommandT<CR>
 nmap tl :TagbarToggle<CR>   "设置快捷键  
 nmap bb :call RunRubyP()<CR>
 
@@ -153,6 +154,7 @@ au BufNewFile,BufRead *.c,*.cpp,*.php,*.html,*.java,*.py,*.js,* set nopaste
 set t_Co=256
 let g:html_diff_one_file = 0
 let g:html_number_lines = 0
+let g:CommandTMaxFiles = 10000
 "set cursorline
 "hi cursorline   cterm=NONE ctermbg=234 ctermfg=NONE
 hi cursorline   cterm=NONE ctermbg=255  ctermfg=NONE
