@@ -75,7 +75,8 @@ let g:airline#extensions#tabline#left_alt_sep = '>'
 let g:airline#extensions#branch#enabled = 1
 
 "setting bellow can help your buffer tab show line number, help you to switch between all buffers"
-let g:airline#extensions#tabline#buffer_nr_show = 1 
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:tagbar_width = 30       "设置宽度，默认为40  
 "autocmd VimEnter * nested :call tagbar#autoopen(1)    "打开vim时自动打开  
