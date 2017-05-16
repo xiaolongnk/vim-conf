@@ -65,6 +65,7 @@ set incsearch hlsearch showmatch matchtime=1
 set hidden "在未保存是 容许 切换缓冲区
 set clipboard+=unnamed encoding=utf-8 termencoding=utf-8
 set formatoptions+=mM
+set textwidth=110
 set fencs=utf-8,gbk
 
 "" little setting for vim-airline , awesome plugin.
