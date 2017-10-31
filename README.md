@@ -12,10 +12,12 @@
 我是假设你再一个配有配置的机器上配置vim。 如果你已经有了自己习惯的配置，可以先将你的配置备份
 一下，然后再将你的配置融合进来，从而形成习惯你自己的配置。
 
-```
-git clone https://github.com/xiaolongnk/vim-conf ~/.vim
-cp ~/.vim/vimrc ~/.vimrc
-```
+    git clone https://github.com/xiaolongnk/vim-conf
+    vimrc 是我的配置文件，可以复制到你的用户目录下
+    bundle 和 vundle 目录放在你用户主目录下的 .vim 目录中
+    然后在vim 命令行中执行 PluginInstall, 会自动帮你安装配置文件中列出的插件
+    tmux , 将tmux目录中的tmux.conf 拷贝到主目录下的.tmux.conf 中即可
+
 
 ### 插件
 
