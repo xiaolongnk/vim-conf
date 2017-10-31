@@ -19,6 +19,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
 
 "setting for my command-t
 set wildignore+=node_modules,.git,*.o,*.obj,vendor
@@ -59,14 +60,25 @@ set expandtab
 set mouse=a 
 set nu 
 set nocompatible
-set shiftwidth=4 tabstop=4 cindent
-set laststatus=2 softtabstop=4 "设定 退格建 可以一次删除掉 4 个空格。
-set incsearch hlsearch showmatch matchtime=1
+set cindent
+set laststatus=2
+set incsearch 
+set hlsearch 
+set showmatch
+set matchtime=1
 set hidden "在未保存是 容许 切换缓冲区
-set clipboard+=unnamed encoding=utf-8 termencoding=utf-8
+set clipboard+=unnamed
+set encoding=utf-8
+set termencoding=utf-8
 set formatoptions+=mM
 set textwidth=110
 set fencs=utf-8,gbk
+
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4 "设定 退格建 可以一次删除掉 4 个空格。
+
+
 
 "" little setting for vim-airline , awesome plugin.
 let g:airline_theme='aurora'
@@ -86,31 +98,40 @@ let g:tagbar_right = 1        "在右侧
 let NERDTreeWinSize=35	"NerdTree 显示的宽度"
 let NERDChristmasTree=1
 
-function RunRubyP()
-	let ftp = &filetype
-	if ftp=='ruby'
-		exe ":!ruby ./%"
-	endif
+function! RunRubyP()
+    let ftp = &filetype
+    if ftp=='ruby'
+        exe ":!ruby ./%"
+    endif
 endfunction
 
-function DoOneFileMake()
-	if(expand("%:p:h")!=getcwd())
-		echohl WarningMsg | echo "Fail to make! This file is not in the current dir! Press redirect to the dir of this file."
-	endif
-	exec "w"
-	call SetCompilation()
-	exec "make"
-	let Exe = expand("%:p:r")
-	exe ":!./%<"
-	"exec "copen"
+function! DoOneFileMake()
+    if(expand("%:p:h")!=getcwd())
+        echohl WarningMsg | echo "Fail to make! This file is not in the current dir! Press redirect to the dir of this file."
+    endif
+    exec "w"
+    call SetCompilation()
+    exec "make"
+    let Exe = expand("%:p:r")
+    exe ":!./%<"
+    "exec "copen"
 endfunction
 
-function SetCompilation()
-	if &filetype=='c'    
-		set makeprg=gcc\ %\ -o\ %<
-	elseif &filetype=='cpp'||'cc'
-		set makeprg=g++\ %\ -o\ %<
-	endif
+function! SetCompilation()
+    if &filetype=='c'    
+        set makeprg=gcc\ %\ -o\ %<
+    elseif &filetype=='cpp'||'cc'
+        set makeprg=g++\ %\ -o\ %<
+    endif
+endfunction
+
+function! Indent_mode()
+    if &filetype=="javascript"
+        set shiftwidth=2
+        set tabstop=2
+        set softtabstop=2 "设定 退格建 可以一次删除掉 4 个空格。
+        echo "javascript mode indent=2"
+    endif
 endfunction
 
 "if filereadable("cscope.out") 
@@ -143,13 +164,38 @@ endfunction
 "    nmap <C-D> :cs find d <C-R>=expand("<cword>")<CR><CR>
 "endif
 
+hi CursorLine cterm=NONE ctermbg=234 ctermfg=darkgreen
+hi CursorColumn cterm=NONE ctermbg=234 ctermfg=darkgreen
+set cursorline
+"set cursorcolumn
+
 "nmap secton;
-nmap tt :sh<cr>
-nmap cc :call DoOneFileMake()<CR>
-nmap nt :NERDTreeToggle<CR>
-nmap ct :CommandT<CR>
-nmap tl :TagbarToggle<CR>   "设置快捷键  
-nmap bb :call RunRubyP()<CR>
+nnoremap tt :sh<cr>
+nnoremap cc :call DoOneFileMake()<CR>
+nnoremap nt :NERDTreeToggle<CR>
+nnoremap ct :CommandT<CR>
+nnoremap tl :TagbarToggle<CR>   "设置快捷键  
+nnoremap bb :call RunRubyP()<CR>
+nnoremap eg :call Indent_mode()<CR>
+nnoremap H :set cursorline!<CR>
+nnoremap r :source ~/.vimrc<CR>
+
+vnoremap E :call Comment()<CR>
+function! Comment() 
+    let comment_indicator = '//'
+    let wordUnderCursor = expand('<cword>')
+    let line = getline('.')
+    let commentline = line
+    let nu = stridx(line, comment_indicator)
+    if nu == 0
+        let commentline = strpart(line, 2)
+    else
+        let commentline = '//' . line
+    endif
+    call setline('.', commentline)
+endfunction
+
+
 
 au BufNewFile,BufRead *.txt  set paste
 au BufNewFile,BufRead *.c,*.cpp,*.php,*.html,*.java,*.py,*.js,* set nopaste
@@ -157,9 +203,6 @@ set t_Co=256
 let g:html_diff_one_file = 0
 let g:html_number_lines = 0
 let g:CommandTMaxFiles = 10000
-"set cursorline
-"hi cursorline   cterm=NONE ctermbg=234 ctermfg=NONE
-hi cursorline   cterm=NONE ctermbg=255  ctermfg=NONE
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
 
 "set tags=tags;
@@ -170,3 +213,5 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 set autochdir
 set backspace=indent,eol,start
 let g:formatterpath = ['~/.vim/template/']
+"let g:syntastic_javascript_checkers = ['eslint']
+
