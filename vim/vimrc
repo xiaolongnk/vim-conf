@@ -22,6 +22,10 @@ function! M_Setup()
     nnoremap tl :TagbarToggle<CR>   "设置快捷键  
     nnoremap H :set cursorline!<CR>
     nnoremap r :source $MYVIMRC<CR>
+    nnoremap z $a
+    nnoremap f 0i
+    inoremap <esc> <nop>
+    inoremap jj <esc>
 
     let g:vim_markdown_folding_disabled=1
     let &termencoding=&encoding
@@ -123,13 +127,11 @@ call pathogen#infect()
 call M_Setup()
 nnoremap bb :call RunRubyP()<CR>
 au BufEnter * call WithHobbies()
-au InsertLeave * write
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
+au TextChanged * write
+"au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
 vnoremap E :call Comment()<CR>
 nnoremap cc :call DoOneFileMake()<CR>
 let mapleader = "-"
 nnoremap <leader>e :find $MYVIMRC<CR>
 nnoremap <leader>- :set paste!<CR>
-inoremap <esc> <nop>
-inoremap jj <esc>
 call vundle#end()
