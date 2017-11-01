@@ -4,32 +4,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 function! M_Setup()
     hi CursorLine cterm=NONE ctermbg=234 ctermfg=darkgreen
-    set cursorline
-    set wildignore+=node_modules,.git,*.o,*.obj,vendor
-    let &termencoding=&encoding
     filetype plugin indent on
     syntax on
-    set fileencodings=utf-8,gbk
-    au InsertLeave * write
-    set expandtab 
-    set mouse=a 
-    set nu 
-    set nocompatible
-    set cindent
-    set laststatus=2
-    set incsearch 
-    set hlsearch 
-    set showmatch
-    set matchtime=1
-    set hidden "在未保存是 容许 切换缓冲区
-    set clipboard+=unnamed
-    set encoding=utf-8
-    set termencoding=utf-8
-    set formatoptions+=mM
-    set textwidth=110
-    set fencs=utf-8,gbk
+    set expandtab mouse=a nu nocompatible cindent laststatus=2 cursorline
+    set incsearch hlsearch showmatch matchtime=1 hidden t_Co=256 autochdir
+    set clipboard+=unnamed encoding=utf-8 termencoding=utf-8 fileencodings=utf-8,gbk
+    set formatoptions+=mM textwidth=110 fencs=utf-8,gbk backspace=indent,eol,start
+    set wildignore+=node_modules,.git,*.o,*.obj,vendor 
     map ,dt a<C-R>=strftime('%Y-%m-%d %H:%M')<CR>
-    let g:vim_markdown_folding_disabled=1
     no<c-k> <c-w>k
     no<c-j> <c-w>j 
     no<c-h> <c-w>h
@@ -40,21 +22,24 @@ function! M_Setup()
     nnoremap tl :TagbarToggle<CR>   "设置快捷键  
     nnoremap H :set cursorline!<CR>
     nnoremap r :source $MYVIMRC<CR>
-    let mapleader = "-"
-    nnoremap <leader>e :find $MYVIMRC<CR>
-    nnoremap <leader>- :set paste!<CR>
-    inoremap <esc> <nop>
-    inoremap jj <esc>
-    set t_Co=256
 
+    let g:vim_markdown_folding_disabled=1
+    let &termencoding=&encoding
     let g:html_diff_one_file = 0
     let g:html_number_lines = 0
     let g:CommandTMaxFiles = 10000
-    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
-
-    set autochdir
-    set backspace=indent,eol,start
     let g:formatterpath = ['~/.vim/template/']
+    let g:airline_theme='aurora'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '>' 
+    let g:airline#extensions#branch#enabled = 1
+    let g:airline#extensions#tabline#buffer_nr_show = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:tagbar_width = 30
+    let g:tagbar_right = 1
+    let NERDTreeWinSize=35
+    let NERDChristmasTree=1
     " let g:syntastic_javascript_checkers = ['eslint']
     
     " let Vundle manage Vundle, required
@@ -73,20 +58,6 @@ function! M_Setup()
     Plugin 'airblade/vim-gitgutter'
     Plugin 'scrooloose/syntastic'
 
-    let g:airline_theme='aurora'
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '>' 
-    let g:airline#extensions#branch#enabled = 1
-
-    "setting bellow can help your buffer tab show line number, help you to switch between all buffers"
-    let g:airline#extensions#tabline#buffer_nr_show = 1
-    let g:airline#extensions#tabline#fnamemod = ':t'
-
-    let g:tagbar_width = 30       "设置宽度，默认为40  
-    let g:tagbar_right = 1        "在右侧  
-    let NERDTreeWinSize=35	"NerdTree 显示的宽度"
-    let NERDChristmasTree=1
 
 endfunction
 
@@ -152,7 +123,13 @@ call pathogen#infect()
 call M_Setup()
 nnoremap bb :call RunRubyP()<CR>
 au BufEnter * call WithHobbies()
+au InsertLeave * write
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
 vnoremap E :call Comment()<CR>
 nnoremap cc :call DoOneFileMake()<CR>
-
+let mapleader = "-"
+nnoremap <leader>e :find $MYVIMRC<CR>
+nnoremap <leader>- :set paste!<CR>
+inoremap <esc> <nop>
+inoremap jj <esc>
 call vundle#end()
