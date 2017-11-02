@@ -27,8 +27,8 @@ function! M_Setup()
     inoremap <esc> <nop>
     inoremap jj <esc>
 
-    let g:vim_markdown_folding_disabled=1
     let &termencoding=&encoding
+    let g:vim_markdown_folding_disabled=1
     let g:html_diff_one_file = 0
     let g:html_number_lines = 0
     let g:CommandTMaxFiles = 10000
@@ -72,26 +72,6 @@ function! RunRubyP()
     endif
 endfunction
 
-function! DoOneFileMake()
-    if(expand("%:p:h")!=getcwd())
-        echohl WarningMsg | echo "Fail to make! This file is not in the current dir!"
-    endif
-    exec "w"
-    call SetCompilation()
-    exec "make"
-    let Exe = expand("%:p:r")
-    exe ":!./%<"
-    "exec "copen"
-endfunction
-
-function! SetCompilation()
-    if &filetype=='c'    
-        set makeprg=gcc\ %\ -o\ %<
-    elseif &filetype=='cpp'||'cc'
-        set makeprg=g++\ %\ -o\ %<
-    endif
-endfunction
-
 function! WithHobbies()
     " only set 2 space width for javascript, 4 for else.
     let ft = &filetype
@@ -130,7 +110,6 @@ au BufEnter * call WithHobbies()
 au TextChanged * write
 "au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
 vnoremap E :call Comment()<CR>
-nnoremap cc :call DoOneFileMake()<CR>
 let mapleader = "-"
 nnoremap <leader>e :find $MYVIMRC<CR>
 nnoremap <leader>- :set paste!<CR>
