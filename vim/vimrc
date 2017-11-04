@@ -101,14 +101,25 @@ function! Comment()
 endfunction
 
 
+
+function! My_abbreviates()
+     abbr mtb \| Tables   \| Are           \| Cool  \|<cr>\| -------- \|:-------------:\| -----:\|<cr>\| col 3 is \| right-aligned \| $1600 \|<cr>
+endfunction
+
+function! Auto_save()
+    if &filetype != 'nerdtree' && &filetype != 'tagbar'
+        write
+    endif
+endfunction
+
 call vundle#begin()
 call pathogen#infect()
 
 call M_Setup()
+call My_abbreviates()
 nnoremap bb :call RunRubyP()<CR>
 au BufEnter * call WithHobbies()
-au TextChanged * write
-"au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif 
+au TextChanged * exec ":call Auto_save()"
 vnoremap E :call Comment()<CR>
 let mapleader = "-"
 nnoremap <leader>e :find $MYVIMRC<CR>
