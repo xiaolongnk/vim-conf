@@ -120,6 +120,7 @@ call My_abbreviates()
 nnoremap bb :call RunRubyP()<CR>
 au BufEnter * call WithHobbies()
 au TextChanged * exec ":call Auto_save()"
+au InsertLeave * write
 vnoremap E :call Comment()<CR>
 let mapleader = "-"
 nnoremap <leader>e :find $MYVIMRC<CR>
