@@ -69,9 +69,9 @@ function! RunRubyP()
     let ftp = &filetype
     if ftp=='ruby'
         exe ":!ruby ./%"
-    else if ftp == 'javascript'
+    elseif ftp == 'javascript'
         exe ":!node ./%"
-    else if ftp == 'php'
+    elseif ftp == 'php'
         exe ":!php ./%"
     else
         echo "filetype :".ftp." currently not supported!!!"
