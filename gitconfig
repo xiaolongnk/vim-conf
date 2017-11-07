@@ -1,0 +1,103 @@
+[merge]
+    summary = true
+    tool = vimdiff
+
+[diff]
+    renames = copy
+    tool    = vimdiff
+
+[difftool]
+    prompt  = no
+
+[color]
+     diff   = always
+     status = true
+     branch = auto
+     interactive = auto
+     ui = true
+
+[color "diff"]
+    meta = magenta black bold
+
+[color "branch"]
+    current  = bold green
+    local    = normal
+    remote   = bold red
+    upstream = bold blue
+
+[status]
+    submodulesummary = -1
+
+[format]
+    numbered = auto
+
+[alias]
+    sed  = !git ls-files --stage | grep ^100 | awk '{print $4}' | xargs sed $@
+    who  = shortlog -n -s --no-merges
+    stat = status
+
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lp = log --pretty=oneline --abbrev-commit --graph --decorate
+    logns = log --color --name-status
+    gc = grep -n --color -E
+    ci = commit
+    co = checkout
+    st = status
+    # 查看远程分支,远程分支会用红色表示出来
+    ba = branch -a
+    bv = branch -v
+    bm = branch -m
+    bd = branch -d
+    b = branch
+    bc = checkout -b
+    rt = reset --hard
+    cp = cherry-pick -x
+    nb = checkout -b
+    mg = merge
+    df = diff
+    rv = remote -v
+    rso= remote show origin
+
+    # 'git add -u' 只包含刪除的檔案,不包含新增檔案
+    # 'git add .' 包含修改和新增的檔案,但是不包含刪除
+    # 'git addall' 通通加到 staging
+    au = add -u
+    awd= add .
+    aa = !sh -c 'git add . && git add -u'
+
+    # To list untracked files
+    ut = ls-files --other --exclude-standard
+    # list tracked files
+    tf = ls-files
+    # show modified files
+    lm = ls-files -m
+    # show deleted files
+    ld = ls-files -d
+    # show unmerged files
+    lu = ls-files -u
+
+    unstage  = reset HEAD
+    uncommit = reset --soft HEAD^
+    amend    = commit --amend
+
+    # 使用 vimdiff 查看 diff 文件
+    vdf = difftool
+
+    # 临时保存
+    ss = stash
+
+[core]
+    # 对 0x80以上的字符不进行quote,以正常显示中文
+    quotepath = false
+    editor = vim
+	trustctime = false
+
+[branch "master"]
+    remote = origin
+    merge  = refs/heads/master
+[push]
+    # nothing, matching, upstream, simple, current
+    default = current
+[user]
+    email = yourprivatename@126.com
+    name = yourprivatename
