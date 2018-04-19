@@ -24,7 +24,6 @@ function! M_Setup()
     nnoremap r :source $MYVIMRC<CR>
     nnoremap z $a
     nnoremap f 0i
-    inoremap <esc> <nop>
     inoremap jj <esc>
 
     let &termencoding=&encoding
@@ -125,7 +124,7 @@ call M_Setup()
 call My_abbreviates()
 nnoremap bb :call RunRubyP()<CR>
 au BufEnter * call WithHobbies()
-au TextChanged * exec ":call Auto_save()"
+"au TextChanged * exec ":call Auto_save()"
 au InsertLeave * write
 vnoremap E :call Comment()<CR>
 let mapleader = "-"
